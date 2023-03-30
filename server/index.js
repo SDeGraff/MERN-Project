@@ -9,7 +9,7 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
-import userRoutes from "./routes/user.js";
+import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import { register } from "./controllers/auth.js";
 import { createPost } from "./controllers/posts.js";
@@ -64,8 +64,8 @@ mongoose.connect(process.env.MONGO_URL, {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
     
 //data added one time
-    User.insertMany(users);
-    Post.insertMany(posts);
+    // User.insertMany(users);
+    // Post.insertMany(posts);
 })
 .catch((error) => console.log(`${error} didn't connect`));
 

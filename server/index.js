@@ -9,12 +9,14 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
-import userRoutes from "./routes/users.js";
-import postRoutes from "./routes/Posts.js";
+import userRoutes from "./routes/user.js";
+import postRoutes from "./routes/posts.js";
 import { register } from "./controllers/auth.js";
-import { creatPost } from "./controllers/Posts.js";
+import { creatPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
-
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import { users, posts  } from "./data/index.js";
 
 // Configurations
 const __filename = fileURLToPath(import.meta.url);
@@ -60,6 +62,10 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
 }).then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    
+//data added one time
+    User.insertMany(users);
+    Post.insertMany(posts);
 })
 .catch((error) => console.log(`${error} didn't connect`));
 

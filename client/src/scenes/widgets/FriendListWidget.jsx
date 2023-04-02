@@ -3,9 +3,9 @@ import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setFriends } from "state";
 
-
-const FriendListWidget = () => {
+const FriendListWidget = ({userId}) => {
     const dispatch = useDispatch();
     const { palette } = useTheme();
     const token = useSelector((state) => state.token);
@@ -13,7 +13,7 @@ const FriendListWidget = () => {
 
     const getFriends = async () => {
         const response = await fetch(
-            `http://localhost:3001/users/${userId}friends`,
+            `http://localhost:3001/users/${userId}/friends`,
             {
                 method: "GET",
                 headers: { Authorization: `Bearer ${token}`},
@@ -25,6 +25,7 @@ const FriendListWidget = () => {
 
     useEffect(() => {
         getFriends();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]); 
 
     return (

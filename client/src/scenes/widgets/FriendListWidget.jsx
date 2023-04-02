@@ -3,7 +3,7 @@ import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import state, { setFriends } from "state";
+
 
 const FriendListWidget = () => {
     const dispatch = useDispatch();
@@ -42,3 +42,5 @@ const FriendListWidget = () => {
         </WidgetWrapper>
     );
 };
+
+export default FriendListWidget;

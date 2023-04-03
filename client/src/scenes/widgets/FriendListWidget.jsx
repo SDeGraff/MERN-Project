@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/icons-material";
+import { Box, Typography, useTheme } from "@mui/material";
 import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect } from "react";
